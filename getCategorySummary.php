@@ -1,0 +1,20 @@
+<?php
+
+include "dbFunctions.php";
+
+$query = "Select category, number_films from category "
+        . "INNER JOIN film_category "
+        . "AND film";
+$result = mysqli_query($link, $query);
+
+$response = array();
+while ($row = mysqli_fetch_assoc($result)){
+    $response[] = $row;
+}
+
+mysqli_close($link);
+
+echo json_encode($response);
+
+?>
+
